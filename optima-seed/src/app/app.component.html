@@ -1,0 +1,12 @@
+<h1>
+  {{title}}
+</h1>
+<button (click)="logout()">Logout</button>
+<div *ngIf="username">Welcome {{username}}</div>
+<div *ngIf="roles.includes('customer')">
+    <app-store-nav></app-store-nav>
+</div>
+<div  >
+    <app-adm</in-nav>app-admin-nav>
+</div>
+<router-outlet></router-outlet>
