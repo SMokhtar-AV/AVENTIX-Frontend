@@ -29,6 +29,17 @@ const HORIZONTALMENUITEMS = [
     icon: 'home'
   },
   {
+    state: 'users',
+    name: 'USERS',
+    type: 'sub',
+    icon: 'format_line_spacing',
+    children: [
+      {state: 'all', name: 'Users'},
+      {state: 'add', name: 'New'},
+      {state: 'pending', name: 'Pending'}
+    ]
+  },
+  {
     state: 'employee',
     name: 'EMPLOYEE',
     type: 'sub',

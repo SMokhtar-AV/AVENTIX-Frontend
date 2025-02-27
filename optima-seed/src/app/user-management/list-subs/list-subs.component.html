@@ -1,0 +1,23 @@
+<div style="width: 500px; margin: auto;">
+    <div class="container">
+        <h4>Pending</h4>
+        <button (click)="refresh()" class="btn btn-success">Refresh</button>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let sub of subs; let i = index" [class.active]="i == currentIndex">
+                <a matLine [routerLink]="['/users/pending', sub.id]">
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{sub.firstName}}
+                        </div>
+                        <div class="col-md-3">
+                            {{sub.lastName}}
+                        </div>
+                        <div class="col-md-3">
+                            {{myDateParser(sub.timestamp)}}
+                        </div>
+                    </div>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </div>
+</div>

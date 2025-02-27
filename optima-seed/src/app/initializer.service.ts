@@ -16,12 +16,10 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
             onLoad: 'login-required'
           },
           bearerExcludedUrls: []
-        });
-        resolve();
+        }).then(resolve);
       } catch (error) {
         reject(error);
       }
     });
   };
 }
-

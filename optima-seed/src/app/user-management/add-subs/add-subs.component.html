@@ -1,0 +1,37 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" id="firstName" required [(ngModel)]="sub.firstName" name="firstName" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" id="lastName" required [(ngModel)]="sub.lastName" name="lastName" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" required [(ngModel)]="sub.email" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input class="form-control" id="phone" type="phone" required [(ngModel)]="sub.phone" name="phone" />
+            </div>
+            <div class="form-group">
+                <label for="groups">Type</label>
+                <select id="groups" required [(ngModel)]="sub.type" name="groups"> 
+                <option value="Clients">Client</option>
+                <option value="Merchants">Merchant</option>
+                <option value="BigMerchants">Big Merchant</option>
+                <option value="BankManagers">Bank Manager</option>
+                <option value="TWAdmins">Admin</option>
+            </select>
+            </div>
+            <button (click)="subscribe()" class="btn btn-success">Subscribe</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h3>You successfully subscribed!</h3>
+        </div>
+    </div>
+</div>

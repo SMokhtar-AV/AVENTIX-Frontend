@@ -37,7 +37,7 @@ import { SharedModule } from './shared/shared.module';
  
 import { initializer } from './initializer.service';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { UserComponent } from './user/user.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
@@ -54,15 +54,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent,   
-    UserComponent
+    AuthLayoutComponent,
   ],
   exports: [RouterModule],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes, {scrollPositionRestoration: 'enabled'}),
+    RouterModule.forRoot(AppRoutes, { scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' }),
     FormsModule,
     MatSidenavModule,
     MatInputModule,

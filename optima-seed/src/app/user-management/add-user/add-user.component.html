@@ -1,0 +1,45 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" required [(ngModel)]="user.username" name="username" />
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" id="firstName" required [(ngModel)]="user.firstName" name="firstName" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" id="lastName" required [(ngModel)]="user.lastName" name="lastName" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" required [(ngModel)]="user.email" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" required [(ngModel)]="this.password" name="password" type="password" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input class="form-control" id="phone" type="phone" required [(ngModel)]="this.phone" name="phone" />
+            </div>
+            <div class="form-group">
+                <label for="groups">Type</label>
+                <select id="groups" required [(ngModel)]="user.groups" name="groups"> 
+                <option value="Clients">Client</option>
+                <option value="Merchants">Merchant</option>
+                <option value="BigMerchants">Big Merchant</option>
+                <option value="BankManagers">Bank Manager</option>
+                <option value="TWAdmins">Admin</option>
+            </select>
+            </div>
+            <button (click)="createUser()" class="btn btn-success">Create</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h3>You successfully created a product!</h3>
+        </div>
+    </div>
+</div>

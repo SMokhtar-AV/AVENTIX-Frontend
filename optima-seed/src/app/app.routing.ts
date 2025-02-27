@@ -22,7 +22,11 @@ export const AppRoutes: Routes = [{
   {
     path: 'employee',
     loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
-  } ]
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./user-management/users/users.module').then(m => m.UsersModule)
+  }]
 
 
 

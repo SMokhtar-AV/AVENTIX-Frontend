@@ -1,4 +1,3 @@
-
 /*
 //--Theme Info--//
 
@@ -34,6 +33,8 @@ Author: TrendSetter Themes
 ---------------
 3. Utilities
 ---------------*/
+
+@import "~bootstrap/dist/css/bootstrap.css";
 @import "scss/material.variables";
 @import "scss/material.themes";
 @import "scss/mixins/bi-app/bi-app-ltr";
@@ -44,4 +45,3 @@ Author: TrendSetter Themes
 @import "scss/core";
 @import "scss/material";
 @import "scss/utilities/utilities";
-
