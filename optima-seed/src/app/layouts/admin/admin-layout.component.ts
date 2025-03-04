@@ -11,7 +11,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import { PerfectScrollbarConfigInterface,
 PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { KeycloakService } from 'keycloak-angular';
-
+import { UsersService } from 'app/service/users.service';
 @Component({
   selector: 'app-layout',
   templateUrl: './admin-layout.component.html'
@@ -38,17 +38,42 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   selectedSidebarColor : any = 'sidebar-default';
   selectedHeaderColor  : any = 'header-default';
   collapsedClass       : any = 'side-panel-opened';
+  selectedUser =
+  {
+    'id': '0',
+    'createdTimestamp': 0,
+    'username': '',
+    'firstName': '',
+    'lastName': '',
+    'enabled': false,
+    'totp': false,
+    'emailVerified': false,
+    'attributes': {
+      'groupName': [], 'Company': [''], '': [''],
+      'disableableCredentialTypes': [],
+      'requiredActions': [],
+      'notBefore': 0,
+      'access': {
+        'manageGroupMembership': false, 'view': false,
+        'mapRoles': false,
+        'impersonate': false, 'manage': false
+      }
+    }
+  };
+  fullName: string;
 
   @ViewChild('sidemenu', {static: true}) sidemenu;
   public config: PerfectScrollbarConfigInterface = {};
 
-  constructor(private router: Router,  private keycloak: KeycloakService, public menuItems: MenuItems, public horizontalMenuItems : HorizontalMenuItems, public translate: TranslateService ) {
+  constructor(private router: Router,  private keycloak: KeycloakService, public menuItems: MenuItems, public horizontalMenuItems : HorizontalMenuItems, public translate: TranslateService, private userservice: UsersService ) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
 
   ngOnInit(): void {
 
+    this.viewUser(this.keycloak.getKeycloakInstance().subject);
+    console.log(  this.fullName);
     const elemSidebar = <HTMLElement>document.querySelector('.sidebar-container ');
 
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar && this.layoutDir != 'rtl') {
@@ -86,7 +111,19 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._router.unsubscribe();
   }
+  viewUser(id): void {
+    this.userservice.getUserById(id).subscribe(
+      user => {
+        this.selectedUser = user;
+        console.log(this.selectedUser);
+        this.fullName = this.selectedUser.firstName + " " + this.selectedUser.lastName;
 
+      },
+      error => {
+        console.log(error);
+      }, () => {
+      });
+  }
   isOver(): boolean {
     if (this.url === '/apps/messages' || this.url === '/apps/calendar' || this.url === '/apps/media' || this.url === '/maps/leaflet') {
       return true;
