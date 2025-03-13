@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment as env } from 'environments/environment';
@@ -8,7 +8,9 @@ import { User } from '../_model/user';
 })
 export class UsersService {
 
-  usersUrl = `${env.admin_keycloak}/users`;
+  usersUrl = `${env.admin_keycloak}users`;
+
+  private apiUrl = 'http://localhost:8080/api/user'
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +32,21 @@ export class UsersService {
 
   deleteUserById(id): Observable<any> { 
     return this.http.delete(`${this.usersUrl}/${id}`);
+  }
+
+  getAllUsers(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl}`)
+  }
+
+  getUsersByEntreprise(email): Observable<any> {
+
+    if(!email) {
+      throw new Error("L'utilisateur n'est pas authentifié ou l'email est introuvable")
+    }
+
+    const params = new HttpParams().set('email', email);
+
+    return this.http.get<any>(`${this.apiUrl}/by-email`, {params})
   }
 }

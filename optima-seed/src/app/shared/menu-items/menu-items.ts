@@ -12,7 +12,7 @@ export interface ChildrenItems {
 }
 
 export interface Menu {
-  state: string;
+  state: string | string[];
   name: string;
   type: string;
   icon: string;
@@ -48,6 +48,23 @@ const MENUITEMS : Menu[] = [
       {state: 'view', name: 'VIEW'}
     ]
   },
+
+  {
+    state: 'demande',
+    name: 'DEMANDE',
+    type: 'link',
+    icon: 'add',
+
+  },
+
+  {
+    state: `listdemande`,
+    name: 'DEMANDES',
+    type: 'link',
+    icon: 'list',
+
+  },
+
   {
     state: 'check',
     name: 'Check',

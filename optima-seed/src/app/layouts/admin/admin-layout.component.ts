@@ -71,9 +71,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
+    console.log(this.keycloak.getKeycloakInstance().subject);
     this.viewUser(this.keycloak.getKeycloakInstance().subject);
-    console.log(  this.fullName);
+    console.log(this.fullName);
     const elemSidebar = <HTMLElement>document.querySelector('.sidebar-container ');
 
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar && this.layoutDir != 'rtl') {

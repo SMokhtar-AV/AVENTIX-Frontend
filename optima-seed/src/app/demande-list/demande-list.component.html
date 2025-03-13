@@ -1,0 +1,24 @@
+<h2>Liste des demandes</h2>
+
+<table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Message</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let demand of demands">
+        <td>{{ demand.type }}</td>
+        <td>{{ demand.message }}</td>
+        <td>{{ demand.description }}</td>
+        <td>{{ demand.date | date:'yyyy-MM-dd HH:mm' }}</td>
+        <td>
+          <button *ngIf="demand.etat === 'NON_VALIDE'"  (click)="openPopup(demand)">Creer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
