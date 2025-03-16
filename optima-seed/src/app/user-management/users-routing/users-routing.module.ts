@@ -10,6 +10,8 @@ export const UsersRoutes: Routes = [
   { path: 'all', component: ListUsersComponent },
   { path: 'user/:id', component: UpdateUsersComponent, canActivate: [AuthGuard], data: { roles: ['Admin']} },
   { path: 'add', component: AddSubsComponent },
-  
+  { path: 'users/all', component: ListUsersComponent },
+  { path: '/users/all', component: ListUsersComponent },
   { path: 'subscribe', component: AddSubsComponent },
 ];
+ 

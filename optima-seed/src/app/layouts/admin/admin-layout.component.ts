@@ -73,7 +73,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.viewUser(this.keycloak.getKeycloakInstance().subject);
-    console.log(  this.fullName);
+    console.log(this.selectedUser+'ffffff');
     const elemSidebar = <HTMLElement>document.querySelector('.sidebar-container ');
 
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar && this.layoutDir != 'rtl') {
@@ -115,7 +115,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.userservice.getUserById(id).subscribe(
       user => {
         this.selectedUser = user;
-        console.log(this.selectedUser);
+        console.log(this.selectedUser+'ffffff');
         this.fullName = this.selectedUser.firstName + " " + this.selectedUser.lastName;
 
       },

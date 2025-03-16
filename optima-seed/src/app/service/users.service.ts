@@ -9,7 +9,7 @@ import { User } from '../_model/user';
 export class UsersService {
 
   usersUrl = `${env.api_host}/api/user`;
-
+  usersUrls = `${env.admin_keycloak}/users`;
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
@@ -17,7 +17,7 @@ export class UsersService {
   }
 
   getUserById(id): Observable<any> {
-    return this.http.get(`${this.usersUrl}/${id}`);
+    return this.http.get(`${this.usersUrls}/${id}`);
   }
 
   addUser(user): Observable<any> {

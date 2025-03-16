@@ -1,4 +1,4 @@
-<div *ngIf="!submitted">
+<div *ngIf="submitted===false">
     <div class="modal-header">
         <h4 class="ml-3">New User</h4>
         <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
@@ -41,8 +41,18 @@
                                 <input matInput placeholder="Phone" type="text" name="phone" [(ngModel)]="sub.phone" formControlName="phone">
                                 <mat-error *ngIf="register.get('phone').hasError('required')">Phone is required</mat-error>
                             </mat-form-field>
-                            
-                             
+                          
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>User Type</mat-label>
+                                <mat-select name="roleUser" [(ngModel)]="sub.roleUser" formControlName="roleUser">
+                                    <mat-option value=" Super Admin"> Super Admin </mat-option>
+                                    <mat-option value="Admin Aventix"> Admin Aventix </mat-option>
+                                    <mat-option value="Admin"> Admin </mat-option>
+                                    <mat-option value="User"> User </mat-option>
+                                    <mat-option value="Commercant"> Commercant </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="register.get('roleUser').hasError('required')">User type is required</mat-error>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
@@ -58,11 +68,25 @@
         </button>
     </div>
 </div>
-
-<div *ngIf="submitted" class="text-center p-4">
-    <h2>DONE!</h2>
-    <h3>User successfully added!</h3>
-    <p>Please send the username and password via email to the new user.</p>
-    <p style="color: crimson;">* This process will be automated in future versions.</p>
-    <button (click)="onNoClick()" class="btn btn-secondary">Close</button>
+<div *ngIf="submitted===true">
+    <div class="about-more pt-2 mt-3 mb-3 text-center">
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <div fxFlex.gt-sm="80" fxFlex.gt-xs="80" fxFlex="100" class="m-gap p-gap">
+                
+                <div class="title text-center mb-5 mt-3">
+                    <h2>
+                       utilisateur Ajouter !
+                    </h2>
+                </div>
+                <p class="text-lg">
+                      Mot de passe est envoyé via E-mail à l'utilisateur.
+                </p>
+                <p class="text-lg"></p>
+               
+                <button (click)="onNoClick()" class="btn btn-secondary">
+                    <span translate> Close</span>
+                    </button>
+            </div>
+        </div>
+    </div>
 </div>

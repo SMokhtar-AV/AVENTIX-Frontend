@@ -63,34 +63,7 @@ const HORIZONTALMENUITEMS = [
     ]
   }
   ,
-  {
-    state: 'material',
-    name: 'MATERIAL',
-    type: 'sub',
-    icon: 'equalizer' ,
-    children: [
-      {state: 'material/button', name: 'BUTTON'},
-      {state: 'material/cards', name: 'CARDS'},
-      {state: 'material/select', name: 'SELECT'},
-      {state: 'material/chips', name: 'CHIPS'},
-      {state: 'material/input', name: 'INPUT'},
-      {state: 'material/checkbox', name: 'CHECKBOX'},
-      {state: 'material/radio', name: 'RADIO'},
-      {state: 'material/toolbar', name: 'TOOLBAR'},
-      {state: 'material/lists', name: 'LISTS'},
-      {state: 'material/grid', name: 'GRID'},
-      {state: 'material/progress', name: 'PROGRESS'},
-      {state: 'material/tabs', name: 'TABS'},
-      {state: 'material/switch', name: 'SWITCH'},
-      {state: 'material/tooltip', name: 'TOOLTIP'},
-      {state: 'material/menu', name: 'MENU'},
-      {state: 'material/slider', name: 'SLIDER'},
-      {state: 'material/snackbar', name: 'SNACKBAR'},
-      {state: 'material/dialog', name: 'DIALOG'}
-    ]
-    
-  }
-  ,
+  
   {
     state: 'authentication',
     name: 'AUTHENTICATIONs',

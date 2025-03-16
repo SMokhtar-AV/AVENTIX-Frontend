@@ -4,7 +4,7 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
-   
+    roleUser:string;
     phone: string;
     enabled: boolean;
     totp: boolean;
