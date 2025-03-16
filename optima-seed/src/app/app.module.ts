@@ -41,7 +41,8 @@ import { AddDemandeComponent } from './Demande/add-demande/add-demande.component
 import { DemandeListComponent } from './demande-list/demande-list.component';
 import { FormPopupComponent } from './form-popup/form-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+ import { MatPaginatorModule } from '@angular/material/paginator';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
@@ -78,7 +79,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatSlideToggleModule,
     MatPaginatorModule,
     MatMenuModule,
-    
+    MatSlideToggleModule,
+    MatPaginatorModule,
     MatToolbarModule,
     MatTabsModule,
     MatCheckboxModule,
