@@ -37,6 +37,8 @@ import { SharedModule } from './shared/shared.module';
  
 import { initializer } from './initializer.service';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -67,7 +69,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatInputModule,
     MatIconModule,
     MatListModule,
+    MatTabsModule,
+    MatSlideToggleModule,
+    MatPaginatorModule,
     MatMenuModule,
+    
     MatToolbarModule,
     MatTabsModule,
     MatCheckboxModule,

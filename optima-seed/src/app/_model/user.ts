@@ -1,9 +1,11 @@
 export interface User {
     id: string;
-    username: string;
+    userName: string;
     firstName: string;
     lastName: string;
     email: string;
+   
+    phone: string;
     enabled: boolean;
     totp: boolean;
     emailVerified: boolean;

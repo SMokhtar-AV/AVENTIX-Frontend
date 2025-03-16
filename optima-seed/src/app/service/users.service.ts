@@ -8,7 +8,7 @@ import { User } from '../_model/user';
 })
 export class UsersService {
 
-  usersUrl = `${env.admin_keycloak}/users`;
+  usersUrl = `${env.api_host}/api/user`;
 
   constructor(private http: HttpClient) { }
 

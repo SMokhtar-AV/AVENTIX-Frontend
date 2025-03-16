@@ -9,7 +9,7 @@ import { Subscription } from '../_model/subscription';
 })
 export class SubscriptionService {
 
-  subsUrl = `${env.api_host}/subscription`;
+  subsUrl = `${env.api_host}/api/user`;
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +26,6 @@ export class SubscriptionService {
   }
 
   addSubs(sub): Observable<any> {
-    return this.http.post(`${this.subsUrl}/subscribe`, sub);
+    return this.http.post(`${this.subsUrl}`, sub);
   }
 }

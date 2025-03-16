@@ -1,37 +1,68 @@
-<div style="width: 500px; margin: auto;">
-    <div class="submit-form">
-        <div *ngIf="!submitted">
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input class="form-control" id="firstName" required [(ngModel)]="sub.firstName" name="firstName" />
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input class="form-control" id="lastName" required [(ngModel)]="sub.lastName" name="lastName" />
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" required [(ngModel)]="sub.email" name="email" />
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input class="form-control" id="phone" type="phone" required [(ngModel)]="sub.phone" name="phone" />
-            </div>
-            <div class="form-group">
-                <label for="groups">Type</label>
-                <select id="groups" required [(ngModel)]="sub.type" name="groups"> 
-                <option value="Clients">Client</option>
-                <option value="Merchants">Merchant</option>
-                <option value="BigMerchants">Big Merchant</option>
-                <option value="BankManagers">Bank Manager</option>
-                <option value="TWAdmins">Admin</option>
-            </select>
-            </div>
-            <button (click)="subscribe()" class="btn btn-success">Subscribe</button>
-        </div>
-
-        <div *ngIf="submitted">
-            <h3>You successfully subscribed!</h3>
+<div *ngIf="!submitted">
+    <div class="modal-header">
+        <h4 class="ml-3">New User</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form #form="ngForm" [formGroup]="register">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>Username</mat-label>
+                                <input matInput placeholder="User Name" type="text" name="userName" [(ngModel)]="sub.userName" formControlName="userName">                   
+                                <mat-error *ngIf="register.get('userName').hasError('required')">Username must have at least 5 characters</mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="First Name" type="text" name="firstName" [(ngModel)]="sub.firstName" formControlName="firstName">
+                                <mat-error *ngIf="register.get('firstName').hasError('required')">First Name is required</mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="Last Name" type="text" name="lastName" [(ngModel)]="sub.lastName" formControlName="lastName">
+                                <mat-error *ngIf="register.get('lastName').hasError('required')">Last Name is required</mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>E-mail</mat-label>
+                                <input matInput placeholder="Email" type="text" name="email" [(ngModel)]="sub.email" formControlName="email">
+                                <mat-error *ngIf="register.get('email').hasError('required')">Email is required</mat-error>
+                                <mat-error *ngIf="register.get('email').hasError('email')">Email seems invalid.</mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field appearance="outline" style="width: 100%">
+                                <mat-label>Phone</mat-label>
+                                <input matInput placeholder="Phone" type="text" name="phone" [(ngModel)]="sub.phone" formControlName="phone">
+                                <mat-error *ngIf="register.get('phone').hasError('required')">Phone is required</mat-error>
+                            </mat-form-field>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+    <div class="modal-footer mr-3">
+        <button (click)="subscribe(); form.resetForm();" class="btn btn-primary">
+            Create
+        </button>
+        <button (click)="onNoClick()" class="btn btn-secondary">
+            Cancel
+        </button>
+    </div>
+</div>
+
+<div *ngIf="submitted" class="text-center p-4">
+    <h2>DONE!</h2>
+    <h3>User successfully added!</h3>
+    <p>Please send the username and password via email to the new user.</p>
+    <p style="color: crimson;">* This process will be automated in future versions.</p>
+    <button (click)="onNoClick()" class="btn btn-secondary">Close</button>
 </div>

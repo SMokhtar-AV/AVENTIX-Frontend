@@ -6,7 +6,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 export const AppRoutes: Routes = [{
   path: '',
-  redirectTo: 'home',
+  redirectTo: 'users/all',
   pathMatch: 'full',
 }, {
   path: '',
@@ -19,10 +19,7 @@ export const AppRoutes: Routes = [{
     path: 'material',
     loadChildren: () => import('./material/material.module').then(m => m.MaterialComponentsModule)
   },
-  {
-    path: 'employee',
-    loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
-  },
+   
   {
     path: 'users',
     loadChildren: () => import('./user-management/users/users.module').then(m => m.UsersModule)

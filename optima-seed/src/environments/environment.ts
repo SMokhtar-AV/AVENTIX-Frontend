@@ -11,5 +11,5 @@ export const environment = {
     clientId: 'Angular-app'
   },
   admin_keycloak: 'http://localhost:8080/auth/admin/realms/UsersManagement',
-  api_host: 'http://localhost:8080'
+  api_host: 'http://localhost:8081'
 };

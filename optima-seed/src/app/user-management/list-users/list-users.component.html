@@ -1,20 +1,110 @@
-<div style="width: 500px; margin: auto;">
-    <div class="container">
-        <h4>Users List</h4>
-        <button (click)="refresh()" class="btn btn-success">Refresh</button>
-        <mat-nav-list>
-            <mat-list-item *ngFor="let user of users; let i = index" [class.active]="i == currentIndex">
-                <a matLine [routerLink]="['/users/user', user.id]">
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{user.username}}
-                        </div>
-                        <div class="col-md-6">
-                            {{user.email}}
+<div>
+    <mat-card class="mb-2" style="align-content: center;" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+
+        <div  >
+
+        
+            <div >
+                
+                <div fxLayout="row wrap" class="user-list-wrapper mt-2">
+                    <div class="p-list-main-btn">
+                        <div class="p-list mb-1 ml-4">
+                            <div (click)="open()">
+                                <div class="cta row">
+                                    <span>
+                                        Add user
+                                    </span>
+                                    <i class="material-icons">add</i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-    </div>
+                </div>
+                
+                <mat-tab-group (selectedTabChange)="tabClick($event)">
+
+                    <mat-tab >
+                      
+                        <mat-card-content>
+                            <div fxLayout="row wrap" class="user-list-wrapper">
+                                <div class="p-list-main-still mb-5" style="padding: 1%;" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                    <div class="p-list">
+                                        <span class="d-flex">
+                                                <mat-icon role="img"
+                                                    class="mat-icon notranslate material-icons mat-icon-no-color"
+                                                    aria-hidden="true" style="padding-right: 5%;">search</mat-icon>
+                                                <span class="silk-block mb-1" fxFlex.xs="100" fxFlex.sm="100"
+                                                    fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                                    <input matInput placeholder="Search by username..." required
+                                                        (keyup)='filterClients($event)'>
+                                                </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div fxLayout="row wrap" class="user-list-wrapper">
+                                        <div class="p-list-main " fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100" *ngFor="let user of allUsers | slice :((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)">
+                                            <div class="p-list" (click)="edit(user.id)">
+                                                <div class="user-content">
+                                                    <div class="pad-wrap d-flex justify-content-between mb-1">
+                                                        <div>
+                                                            <span class="d-flex mb-2">
+                                                                    <h4 class="user-name text-secondary buy">
+                                                                        {{user.firstName+" "+user.lastName}}</h4>
+                                                                </span>
+                                                            <span class="d-flex mb-2">
+                                                                    <mat-icon>account_circle</mat-icon>
+                                                                    <span
+                                                                        class="silk-block mb-1">{{user.userName}}</span>
+                                                            </span>
+                                                            <span class="d-flex mb-2">
+                                                                    <mat-icon>email</mat-icon>
+                                                                    <span class="silk-block mb-1">{{user.email}}</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="inside" title="Click to update user.">
+                                                            <div class="icon"><i class="material-icons">info_outline</i></div>
+                                                            <div class="contents">
+                                                                <span class="d-flex mb-2">
+                                                                        <mat-icon>phone</mat-icon>
+                                                                        <span class="silk-block mb-1">
+                                                                            {{user.phone}}</span>
+                                                                </span>
+                                                                <span class="d-flex mb-2">
+                                                                        <mat-icon>assignment_ind</mat-icon>
+                                                                        <span
+                                                                            class="silk-block mb-1">{{user.userName}}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="row wrap" class="user-list-wrapper mt-5">
+                                        <div class="p-list-main-still mb-5" style="padding: 1%;" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                            <div class="p-list">
+                                                <span class="d-flex">
+                                                        <mat-paginator #paginator [length]="length"
+                                                            [pageSize]="pageSize" [pageSizeOptions]="[2, 6, 10, 20]"
+                                                            (page)="pageEvent = $event" fxFlex.xs="100" fxFlex.sm="100"
+                                                            fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                                        </mat-paginator>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-tab>
+                   
+                </mat-tab-group>
+            </div>
+
+        </div>
+    </mat-card>
 </div>
