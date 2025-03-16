@@ -1,0 +1,62 @@
+<h2>Creation Demande</h2>
+
+<!--
+
+<div class="col-md-6 offset-md-3">
+    <h3>Créer une Demande</h3>
+    <form (ngSubmit)="createDemand()">
+
+        <div class="form-group">
+            <label>Employeur</label>
+            <select class="form-control" [(ngModel)]="selectedUserId" name="user">
+                <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
+            </select>
+        </div>
+
+        <div class="form-group" *ngIf="selectedUserId">
+            <label>Email</label>
+            <select class="form-control" [(ngModel)]="selectedEmail" name="email">
+                <option *ngFor="let email of userEmails" [value]="email">{{ email }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            <input type="text" class="form-control" [(ngModel)]="demand.message" name="message" />
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" [(ngModel)]="demand.description" name="description"></textarea>
+        </div>
+
+        <button class="btn btn-success" type="submit">Soumettre</button>
+    </form>
+</div>
+-->
+
+
+<form [formGroup]="demandForm" (ngSubmit)="submitForm()">
+    <label for="recepteur">Sélectionner un utilisateur :</label>
+    <select id="recepteur" formControlName="recepteurId" (change)="onUserChange($event.target.value)">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
+    </select>
+  
+    <label for="email">Email :</label>
+    <input id="email" formControlName="email" disabled />
+  
+    <label for="type">Type de demande :</label>
+    <select id="type" formControlName="type">
+      <option value="CREATION">CREATION</option>
+      <option value="SUPPRESSION">SUPPRESSION</option>
+    </select>
+  
+    <label for="message">Message :</label>
+    <textarea id="message" formControlName="message"></textarea>
+  
+    <label for="description">Description :</label>
+    <textarea id="description" formControlName="description"></textarea>
+  
+    <button type="submit" [disabled]="demandForm.invalid">Envoyer</button>
+  </form>
+  

@@ -1,0 +1,11 @@
+<h2>Créer une Carte</h2>
+<form (ngSubmit)="submitForm()">
+  <label>Email:</label>
+  <input type="text" [(ngModel)]="cardRequest.email" name="email" required />
+
+  <label>SerialNumber:</label>
+  <input type="number" [(ngModel)]="cardRequest.cardNumber" name="serialNumber" required />
+
+  <button type="submit">Valider</button>
+  <button type="button" (click)="closeDialog()">Annuler</button>
+</form>

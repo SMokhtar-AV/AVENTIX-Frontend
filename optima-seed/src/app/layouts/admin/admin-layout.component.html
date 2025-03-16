@@ -48,6 +48,18 @@
                                     <span fxFlex></span>
                                     <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
                                 </a>
+                                <a appAccordionToggle class="relative" mat-ripple [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+                                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                                    <span>{{ menuitem.name | translate }}</span>
+                                    <span fxFlex></span>
+                                    <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                                </a>
+                                <a appAccordionToggle class="relative" mat-ripple [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+                                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                                    <span>{{ menuitem.name | translate }}</span>
+                                    <span fxFlex></span>
+                                    <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                                </a>
                                 <a appAccordionToggle class="relative" mat-ripple href="javascript:;" *ngIf="menuitem.type === 'sub'">
                                     <mat-icon>{{ menuitem.icon }}</mat-icon>
                                     <span>{{ menuitem.name | translate }}</span>

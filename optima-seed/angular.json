@@ -33,7 +33,8 @@
                             "crossvent",
                             "calendar-utils/date-adapters/date-fns",
                             "contra/emitter",
-                            "@mattlewis92/dom-autoscroller"
+                            "@mattlewis92/dom-autoscroller",
+                            "keycloak-js"
                         ],
                         "styles": [
                             "node_modules/quill/dist/quill.snow.css",

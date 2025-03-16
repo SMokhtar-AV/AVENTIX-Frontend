@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
+import {AddDemandeComponent} from "./Demande/add-demande/add-demande.component";
+import { DemandeListComponent } from './demande-list/demande-list.component';
 
 
 export const AppRoutes: Routes = [{
@@ -29,7 +31,20 @@ export const AppRoutes: Routes = [{
 
 
 
-}, {
+},
+  {
+    path: 'demande',
+    component: AddDemandeComponent
+
+  },
+
+  {
+    path: 'listdemande',
+    component: DemandeListComponent
+
+  },
+
+  {
   path: '',
   component: AuthLayoutComponent,
   children: [{

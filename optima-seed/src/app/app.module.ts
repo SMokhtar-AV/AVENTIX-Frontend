@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -37,8 +37,10 @@ import { SharedModule } from './shared/shared.module';
  
 import { initializer } from './initializer.service';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddDemandeComponent } from './Demande/add-demande/add-demande.component';
+import { DemandeListComponent } from './demande-list/demande-list.component';
+import { FormPopupComponent } from './form-popup/form-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -57,6 +59,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    AddDemandeComponent,
+    DemandeListComponent,
+    FormPopupComponent,
   ],
   exports: [RouterModule],
   imports: [
@@ -80,9 +85,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatProgressBarModule,
     MatSelectModule,
     MatCardModule,
+    MatDialogModule,
     KeycloakAngularModule,
     DemoMaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,
