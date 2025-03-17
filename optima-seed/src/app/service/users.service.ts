@@ -3,6 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment as env } from 'environments/environment';
 import { User } from '../_model/user';
+
+
+
+export interface UserApp {
+  id: number;
+  email: string;
+  solde: number; // Assurez-vous que le backend retourne bien ce champ
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -48,5 +56,11 @@ export class UsersService {
     const params = new HttpParams().set('email', email);
 
     return this.http.get<any>(`${this.apiUrl}/by-email`, {params})
+  }
+
+
+
+  getUserByEmail(email: string): Observable<UserApp> {
+    return this.http.get<UserApp>(`${this.apiUrl}/email?email=${email}`);
   }
 }

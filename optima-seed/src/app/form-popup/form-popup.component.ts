@@ -9,42 +9,46 @@ import { DemandeService } from 'app/service/demande.service';
 })
 export class FormPopupComponent implements OnInit {
 
-
   cardRequest = {
     email: '',
-    cardNumber: null
+    cardNumber: null,
+    demandeId: null // Ajouter l'ID de la demande
   };
 
-  constructor( public dialogRef: MatDialogRef<FormPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data, private demandeService: DemandeService) { }
+  constructor(
+    public dialogRef: MatDialogRef<FormPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private demandeService: DemandeService
+  ) { }
 
-
-  
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    if (this.data?.demandeId) {
+      console.log(this.data.demandeId);
+      
+      this.cardRequest.demandeId = this.data.demandeId; // Récupérer l'ID de la demande
+    }
   }
-
 
   closeDialog(): void {
     this.dialogRef.close();
   }
-  submitForm(): void {
-    console.log('Formulaire soumis', this.data);
 
+  submitForm(): void {
+    if (!this.cardRequest.email || !this.cardRequest.cardNumber) {
+      return;
+    }
+
+    console.log('Formulaire soumis', this.cardRequest);
+    console.log(this.cardRequest);
+    
     this.demandeService.createCard(this.cardRequest).subscribe({
       next: (response) => {
         console.log('Carte créée avec succès:', response);
         this.dialogRef.close(response);
       },
       error: (error) => {
-        console.log('Ereeurs lors de la creation de la carte: ', error);
-        
+        console.error('Erreurs lors de la création de la carte:', error);
       }
     });
-
-    this.dialogRef.close(this.data);
   }
-
-
-
 }

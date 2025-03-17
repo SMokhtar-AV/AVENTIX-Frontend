@@ -6,12 +6,11 @@ import { UpdateUsersComponent } from '../update-users/update-users.component';
 import { AddSubsComponent } from '../add-subs/add-subs.component';
 
 export const UsersRoutes: Routes = [
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: '', component: ListUsersComponent },
   { path: 'all', component: ListUsersComponent },
   { path: 'user/:id', component: UpdateUsersComponent, canActivate: [AuthGuard], data: { roles: ['Admin']} },
   { path: 'add', component: AddSubsComponent },
-  { path: 'users/all', component: ListUsersComponent },
-  { path: '/users/all', component: ListUsersComponent },
+ // { path: 'users', component: ListUsersComponent },
   { path: 'subscribe', component: AddSubsComponent },
 ];
  

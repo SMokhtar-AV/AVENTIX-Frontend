@@ -1,0 +1,16 @@
+.notification-label {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  .unread {
+    background-color: #e3f2fd; /* Bleu clair pour les non lues */
+    font-weight: bold;
+  }
+  

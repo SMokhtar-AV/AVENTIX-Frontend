@@ -1,0 +1,12 @@
+<mat-card class="card-container">
+    <mat-card-title class="card-title">
+      <mat-icon class="wallet-icon">account_balance_wallet</mat-icon>
+      Solde de votre compte
+    </mat-card-title>
+    <mat-card-content *ngIf="user">
+      <p class="balance">💰 {{ user.solde | currency:'EUR' }}</p>
+    </mat-card-content>
+    <mat-card-content *ngIf="!user">
+      <p class="loading-text">Chargement du solde...</p>
+    </mat-card-content>
+  </mat-card>

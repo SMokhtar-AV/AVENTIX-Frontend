@@ -1,62 +1,55 @@
-<h2>Creation Demande</h2>
-
-<!--
-
-<div class="col-md-6 offset-md-3">
-    <h3>Créer une Demande</h3>
-    <form (ngSubmit)="createDemand()">
-
-        <div class="form-group">
-            <label>Employeur</label>
-            <select class="form-control" [(ngModel)]="selectedUserId" name="user">
-                <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
-            </select>
-        </div>
-
-        <div class="form-group" *ngIf="selectedUserId">
-            <label>Email</label>
-            <select class="form-control" [(ngModel)]="selectedEmail" name="email">
-                <option *ngFor="let email of userEmails" [value]="email">{{ email }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Message</label>
-            <input type="text" class="form-control" [(ngModel)]="demand.message" name="message" />
-        </div>
-
-        <div class="form-group">
-            <label>Description</label>
-            <textarea class="form-control" [(ngModel)]="demand.description" name="description"></textarea>
-        </div>
-
-        <button class="btn btn-success" type="submit">Soumettre</button>
-    </form>
-</div>
--->
-
-
-<form [formGroup]="demandForm" (ngSubmit)="submitForm()">
-    <label for="recepteur">Sélectionner un utilisateur :</label>
-    <select id="recepteur" formControlName="recepteurId" (change)="onUserChange($event.target.value)">
-      <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
-    </select>
+<div class="form-container">
+    <mat-card>
+      <mat-card-title>Créer une Demande</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="demandForm" (ngSubmit)="submitForm()">
+          
+          <!-- Sélection d'un utilisateur -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Sélectionner un utilisateur</mat-label>
+            <mat-select formControlName="recepteurId" (selectionChange)="onUserChange($event.value)">
+              <mat-option *ngFor="let user of users" [value]="user.id">
+                {{ user.firstName }} {{ user.lastName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
   
-    <label for="email">Email :</label>
-    <input id="email" formControlName="email" disabled />
+          <!-- Email (readonly) -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" disabled />
+          </mat-form-field>
   
-    <label for="type">Type de demande :</label>
-    <select id="type" formControlName="type">
-      <option value="CREATION">CREATION</option>
-      <option value="SUPPRESSION">SUPPRESSION</option>
-    </select>
+          <!-- Type de demande -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Type de demande</mat-label>
+            <mat-select formControlName="type">
+              <mat-option value="CREATION">Création</mat-option>
+              <mat-option value="SUPPRESSION">Suppression</mat-option>
+            </mat-select>
+          </mat-form-field>
   
-    <label for="message">Message :</label>
-    <textarea id="message" formControlName="message"></textarea>
+          <!-- Message -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message" rows="3"></textarea>
+          </mat-form-field>
   
-    <label for="description">Description :</label>
-    <textarea id="description" formControlName="description"></textarea>
+          <!-- Description -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" rows="3"></textarea>
+          </mat-form-field>
   
-    <button type="submit" [disabled]="demandForm.invalid">Envoyer</button>
-  </form>
+          <!-- Bouton d'envoi -->
+          <div class="button-container">
+            <button mat-raised-button color="primary" type="submit" [disabled]="demandForm.invalid">
+              Envoyer
+            </button>
+          </div>
+          
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
   

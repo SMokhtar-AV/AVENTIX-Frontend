@@ -6,10 +6,10 @@
 export const environment = {
   production: false,
   keycloak: {
-    issuer: 'http://localhost:8080/auth/',
+    issuer: 'http://localhost:8180/auth/',
     realm: 'UsersManagement',
     clientId: 'Angular-app'
   },
-  admin_keycloak: 'http://localhost:8080/auth/admin/realms/UsersManagement',
-  api_host: 'http://localhost:8081'
+  admin_keycloak: 'http://localhost:8180/auth/admin/realms/UsersManagement',
+  api_host: 'http://localhost:8080'
 };

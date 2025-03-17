@@ -14,6 +14,14 @@ export interface Demand {
   etat: string;
 }
 
+
+export interface AppNotification {
+  id: number;
+  message: string;
+  date: string;
+  isRead: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,9 +29,13 @@ export interface Demand {
 
 export class DemandeService {
 
+  private apiPayment = 'http://localhost:8080/payment/process';
+
   private apiUrl = 'http://localhost:8080/api/demand';
 
   private apiCard = 'http://localhost:8080/api/card/create';
+
+  private apiNotif ='http://localhost:8080/api/notifications'
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +58,21 @@ export class DemandeService {
     }
 
 
+    getNotifications(email: string): Observable<AppNotification[]> {
+      return this.http.get<AppNotification[]>(`${this.apiNotif}/user/${email}`);
+    }
 
+    markAsRead(notificationId: number): Observable<void> {
+      return this.http.put<void>(`${this.apiNotif}/${notificationId}/markAsRead`, {});
+    }
+
+
+    markAllAsRead(email: string): Observable<void> {
+      return this.http.put<void>('http://localhost:8080/api/notifications/read-all', email);
+    }
+
+    processPayment(paymentRequest: any): Observable<string> {
+      return this.http.post<string>(this.apiPayment, paymentRequest);
+    }
   
 }

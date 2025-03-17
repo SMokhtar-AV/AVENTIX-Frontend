@@ -43,6 +43,8 @@ import { FormPopupComponent } from './form-popup/form-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
  import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaiementComponent } from './paiement/paiement.component';
+import { CarteComponent } from './carte/carte.component';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
@@ -63,6 +65,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AddDemandeComponent,
     DemandeListComponent,
     FormPopupComponent,
+    PaiementComponent,
+    CarteComponent,
   ],
   exports: [RouterModule],
   imports: [

@@ -1,0 +1,25 @@
+<mat-card class="payment-card">
+    <mat-card-title>Paiement</mat-card-title>
+    <mat-card-content>
+      <form #paymentForm="ngForm" (ngSubmit)="submitPayment()">
+        
+        <!-- Quantité d'article -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Quantité</mat-label>
+          <input matInput type="number" [(ngModel)]="paymentRequest.qantite" name="quantity" required #quantity="ngModel">
+          <mat-error *ngIf="quantity.invalid && quantity.touched">Quantité requise</mat-error>
+        </mat-form-field>
+  
+        <!-- Montant à payer -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Montant (€)</mat-label>
+          <input matInput type="number" step="0.01" [(ngModel)]="paymentRequest.montant" name="amount" required #amount="ngModel">
+          <mat-error *ngIf="amount.invalid && amount.touched">Montant requis</mat-error>
+        </mat-form-field>
+  
+        <!-- Bouton de soumission -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="!paymentForm.form.valid">Payer</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

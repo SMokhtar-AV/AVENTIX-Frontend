@@ -1,24 +1,46 @@
-<h2>Liste des demandes</h2>
+<mat-card>
+  <mat-card-title>Liste des demandes</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="demands" class="mat-elevation-z8">
 
-<table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Message</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let demand of demands">
-        <td>{{ demand.type }}</td>
-        <td>{{ demand.message }}</td>
-        <td>{{ demand.description }}</td>
-        <td>{{ demand.date | date:'yyyy-MM-dd HH:mm' }}</td>
-        <td>
-          <button *ngIf="demand.etat === 'NON_VALIDE'"  (click)="openPopup(demand)">Creer</button>
+      <!-- Type -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let demand"> {{ demand.type }} </td>
+      </ng-container>
+
+      <!-- Message -->
+      <ng-container matColumnDef="message">
+        <th mat-header-cell *matHeaderCellDef> Message </th>
+        <td mat-cell *matCellDef="let demand"> {{ demand.message }} </td>
+      </ng-container>
+
+      <!-- Description -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let demand"> {{ demand.description }} </td>
+      </ng-container>
+
+      <!-- Date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let demand"> {{ demand.date | date:'yyyy-MM-dd HH:mm' }} </td>
+      </ng-container>
+
+      <!-- Action -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let demand">
+          <button mat-raised-button color="primary" *ngIf="demand.etat === 'NON_VALIDE'" (click)="openPopup(demand)">
+            Créer
+          </button>
         </td>
-      </tr>
-    </tbody>
-  </table>
+      </ng-container>
+
+      <!-- Header & Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card-content>
+</mat-card>
